@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TimerForEggs</string>
+    <string name="eggs_3_minutes">Яйцо сварено в мешочек:белок затвердел только по внешнему краю, остальная часть жидкая, как и желток</string>
+    <string name="threeminutes">3 минуты</string>
+    <string name="taimer_eggs">ТАЙМЕР ДЛЯ ВАРКИ ЯИЦ</string>
+    <string name="cold_water_info">При варке с закладкой в холодную воду засекать время варки необходимо после закипания.</string>
+    <string name="hot_water_info">Более простой и точный способ - с закладкой в кипящую воду, после чего кладем яйца и ставим таймер. Однако варить яйца следует не в сильно бурлящей воде, а в едва кипящей, т.е. на небольшом огне.</string>
+</resources>

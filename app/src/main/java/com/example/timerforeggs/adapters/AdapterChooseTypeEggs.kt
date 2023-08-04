@@ -1,46 +1,40 @@
-package com.example.timerforeggs
+package com.example.timerforeggs.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.timerforeggs.data_classes.EggsInfo
+import com.example.timerforeggs.databinding.ForRecViewBinding
 
 
 class AdapterChooseTypeEggs(private val listener: Clickable, private var listTimer: List<EggsInfo>) :
     RecyclerView.Adapter<AdapterChooseTypeEggs.MyViewHolder>() {
 
-    class MyViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class MyViewHolder(private val binding: ForRecViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(property: EggsInfo, listener: Clickable) {
 
-            val imageView = view.findViewById<ImageView>(R.id.image)
-            val infoEgg = view.findViewById<TextView>(R.id.info_for_egg)
-            val button = view.findViewById<Button>(R.id.button_time)
+            binding.infoForEgg.text = property.info
+            binding.buttonTime.text = property.buttonText
 
-            infoEgg.text = property.info
-            button.text = property.buttonText
-
-            Glide.with(view.context)
+            Glide.with(binding.root.context)
                 .load(property.image)
                 .circleCrop()
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .into(imageView)
+                .into(binding.image)
 
-            button.setOnClickListener {
+            binding.buttonTime.setOnClickListener {
                 listener.onClick(property.time)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.for_rec_view, parent, false)
-        return MyViewHolder(v)
+        val binding = ForRecViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
